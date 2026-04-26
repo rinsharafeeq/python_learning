@@ -13,6 +13,6 @@ def is_prime(n):
             return False
         divisor += 1
     return True
-print(is_prime(5))
+print(is_prime(4))
 print(is_prime(10))
 print(is_prime(-71))
