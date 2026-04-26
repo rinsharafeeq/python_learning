@@ -13,3 +13,19 @@
 #(8, 2, "%") → "Unknown operation"
 
 #========================
+def calculate(a, b, op):
+    if op == "+":
+        return a+b
+    elif op == "-":
+        return a-b
+    elif op == "*":
+        return a*b
+    elif op == "/":
+        return a/b
+    else:
+        return "unknown operation"
+print(calculate(10, 5, "+"))
+print(calculate(10, 5, "-"))
+print(calculate(10, 5, "*"))
+print(calculate(10, 5, "/"))
+print(calculate(8,  2, "%"))
