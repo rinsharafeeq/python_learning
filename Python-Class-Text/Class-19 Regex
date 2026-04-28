@@ -1,0 +1,282 @@
+
+Python RegEx
+---------------
+
+A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.
+
+RegEx can be used to check if a string contains the specified search pattern.
+
+RegEx Module
+-------------
+  Python has a built-in package called re, which can be used to work with Regular Expressions.
+
+Import the re module:
+
+import re
+
+RegEx in Python
+----------------
+When you have imported the re module, you can start using regular expressions:
+
+
+Search the string to see if it starts with "The" and ends with "Spain":
+
+import re
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt)
+
+----------------------------------
+
+RegEx Functions
+----------------
+The re module offers a set of functions that allows us to search a string for a match:
+
+Function	Description
+---------	-----------
+findall		Returns a list containing all matches
+search		Returns a Match object if there is a match anywhere in the string
+split		Returns a list where the string has been split at each match
+sub		Replaces one or many matches with a string
+
+
+https://www.programiz.com/python-programming/regex
+
+----------------------------------
+Metacharacters
+---------------
+
+Metacharacters are characters with a special meaning:
+
+1-[] = A set of characters - eg-"[a-m]"
+------------------------------------------
+
+import re
+str = "The rain in Spain"
+#Find all lower case characters alphabetically between "a" and "m":
+x = re.findall("[a-m]", str)
+print(x)
+
+2- "\" - Signals a special sequence (can also be used to escape special characters) - "\d"
+-------------------------------------------------------------------------------------------
+
+import re
+str = "That will be 59 dollars"
+#Find all digit characters:
+x = re.findall("\d", str)
+print(x)
+
+3 - "." -Any character (except newline character) - eg:- "he..o"
+--------------------------------------------------------------------
+
+import re
+str = "hello world"
+#Search for a sequence that starts with "he", followed by two (any) characters, and an "o":
+x = re.findall("he..o", str)
+print(x)
+
+4 - "^"	- Starts with - eg:- "^hello"
+----------------------------------------
+import re
+str = "hello world"
+#Check if the string starts with 'hello':
+x = re.findall("^hello", str)
+if (x):
+  print("Yes, the string starts with 'hello'")
+else:
+  print("No match")
+
+5 - "$" - Ends with - Eg:- "world$"
+-------------------------------------
+import re	
+str = "hello world"
+#Check if the string ends with 'world':
+x = re.findall("world$", str)
+if (x):
+  print("Yes, the string ends with 'world'")
+else:
+  print("No match")
+
+
+6 - "*"	- Zero or more occurrences - Eg:-"aix*"
+-----------------------------------------------
+import re
+str = "The rain in Spain falls mainly in the plain!"
+#Check if the string contains "ai" followed by 0 or more "x" characters:
+x = re.findall("ma.*", str)
+
+print(x)
+if (x):
+  print("Yes, there is at least one match!")
+else:
+  print("No match")
+
+
+7 - "+"	One or more occurrences - Eg:-	"aix+"
+-----------------------------------------------
+import re
+str = "The rain in Spain falls mainly in the plain!"
+#Check if the string contains "ai" followed by 1 or more "x" characters:
+x = re.findall("aix+", str)
+print(x)
+if (x):
+  print("Yes, there is at least one match!")
+else:
+  print("No match")
+
+8 - "{}" Exactly the specified number of occurrences - Eg:- "al{2}"
+--------------------------------------------------------------------
+import re
+str = "The rain in Spain falls mainly in the plain!"
+#Check if the string contains "a" followed by exactly two "l" characters:
+x = re.findall("al{2}", str)
+print(x)
+if (x):
+  print("Yes, there is at least one match!")
+else:
+  print("No match")
+
+
+9 - "|"  - Either or - Eg:- "falls|stays"
+--------------------------------------------
+import re
+str = "The rain in Spain falls mainly in the plain!"
+#Check if the string contains either "falls" or "stays":
+x = re.findall("falls|stays", str)
+print(x)
+if (x):
+  print("Yes, there is at least one match!")
+else:
+  print("No match")
+
+
+
+Sets
+----
+A set is a set of characters inside a pair of square brackets [] with a special meaning:
+
+[arn]	Returns a match where one of the specified characters (a, r, or n) are present
+[a-n]	Returns a match for any lower case character, alphabetically between a and n	
+[^arn]	Returns a match for any character EXCEPT a, r, and n	
+[0123]	Returns a match where any of the specified digits (0, 1, 2, or 3) are present
+[0-9]	Returns a match for any digit between 0 and 9
+[0-5][0-9]	Returns a match for any two-digit numbers from 00 and 59
+[a-zA-Z]	Returns a match for any character alphabetically between a and z, lower case OR upper case
+[+]	In sets, +, *, ., |, (), $,{} has no special meaning, so [+] means: return a match for any + character in the string
+
+Eg:-
+
+import re
+str = "8 times before 11:45 AM"
+#Check if the string has any + characters:
+x = re.findall("[+]", str)
+print(x)
+if (x):
+  print("Yes, there is at least one match!")
+else:
+  print("No match")
+
+--------------------------------------------
+
+The findall() Function
+---------------------------
+The findall() function returns a list containing all matches.
+
+import re
+str = "The rain in Spain"
+x = re.findall("ai", str)
+print(x)
+
+
+The search() Function
+---------------------
+The search() function searches the string for a match, and returns a Match object if there is a match.
+
+If there is more than one match, only the first occurrence of the match will be returned:
+
+Search for the first white-space character in the string:
+
+import re
+str = "The rain in Spain"
+x = re.search("\s", str)
+print("The first white-space character is located in position:", x.start())
+
+
+The split() Function
+----------------------
+The split() function returns a list where the string has been split at each match:
+
+Split at each white-space character:
+
+import re
+str = "The rain in Spain"
+x = re.split("\s", str)
+print(x)
+
+O/P = The rain in spain
+
+
+The sub() Function
+------------------
+The sub() function replaces the matches with the text of your choice:
+
+Replace every white-space character with the number 9:
+
+import re
+str = "The rain in Spain"
+x = re.sub("\s", "9", str)
+print(x)
+
+You can control the number of replacements by specifying the count parameter:
+
+Replace the first 2 occurrences:
+
+import re
+str = "The rain in Spain"
+x = re.sub("\s", "9", str, 2)
+print(x)
+
+
+-----------------------------------
+
+Match Object
+---------------
+A Match Object is an object containing information about the search and the result.
+
+Note: If there is no match, the value None will be returned, instead of the Match Object.
+
+
+The Match object has properties and methods used to retrieve information about the search, and the result:
+
+.span() returns a tuple containing the start-, and end positions of the match.
+.string returns the string passed into the function
+.group() returns the part of the string where there was a match
+
+
+Example
+
+Print the position (start- and end-position) of the first match occurrence.
+
+The regular expression looks for any words that starts with an upper case "S":
+
+import re
+str = "The rain in Spain"
+x = re.search(r"\bS\w+", str)
+print(x.span())
+
+
+Print the string passed into the function:
+-------------------
+import re
+str = "The rain in Spain"
+x = re.search(r"\bS\w+", str)
+print(x.string)
+
+
+Print the part of the string where there was a match.
+-----------------------------------------------------
+The regular expression looks for any words that starts with an upper case "S":
+
+import re
+str = "The rain in Spain"
+x = re.search(r"\bS\w+", str)
+print(x.group())

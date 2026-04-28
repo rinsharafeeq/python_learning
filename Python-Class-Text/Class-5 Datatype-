@@ -1,0 +1,486 @@
+Data Types
+------------
+Whenever you working in a project very important to undrestand what type of data you are working with so that we can process the data in that format. becuse if you dont process the data in particular format you might face errors or bugs 
+
+What are the data types in python
+============================
+none
+numeric/Numbers
+list
+touple
+set
+string
+range
+dictonary
+
+    
+None=  When you have a variable and that variable is not assigned with any value that is none . other language it is null
+
+>> abc = None
+>>type(abc)
+>>> type(None)
+<class 'NoneType'>
+>>>abc
+>>>
+
+Numeric/Numbers = 
+  In Numbers/Numeric, there are mainly 4 types which include Integer, Float, and Complex and bool.
+
+ 1- int 
+ 2- float
+ 3- complex
+ 4- bool
+
+>> num = 2
+>> type(num)
+>> abc = 2.5
+>> type(abc)
+>> a = 6+5j
+>> 
+
+converting one type to another
+
+>>> a = 5.2
+>>> type(a)
+<class 'float'>
+>>> b = int(a)
+>>> type(b)
+<class 'int'>
+>>> b
+5
+
+
+Bool is simply means true or false . desision are base on condition
+
+>>> a = 5
+>>> b = 6
+>>> c = a>b
+>>> c
+False
+>>> type(c)
+<type 'bool'>
+>>> 
+
+
+True = 1
+False = 0
+
+int(True)
+1
+int(False)
+0
+
+----------------------------------------------------
+
+Sequences 
+-----------
+List , Tuple , set , string, Range  
+ 
+
+List 
+------
+The list is a most versatile datatype available in Python which can be written as a list of comma-separated values (items) between square brackets. Important thing about a list is that items in a list need not be of the same type.
+
+If you have diffrent Values (numbers .strinfg..etc ) if you want to group them together we can use list
+
+>>list1 = [12,13,14,55.3,"testing",True]
+>>type(list1)
+list
+
+
+>>list1 = ['physics', 'chemistry', 1997, 2000];
+>> nums = [10,20,45,55]
+>> nums[0]
+10
+>> nums[2:]
+45, 55
+>> nums[-1]
+55
+
+List concatination
+-------------------
+>> names = ['ashique','pradeep','shabeeb']   
+>> numbs = [1,2,3,]
+>> mil = [names, numbs]
+[['ashique','pradeep','shabeeb'],[1,2,3,]]
+  
+>> names.append("new-name")  = appending list item values
+will add
+>> name.clear()  = will clear the value
+
+append and insert diffrent is append will add end
+insert will add in particulart index
+
+>> name.insert(2,"ashique")
+>> name
+will come in 3rd place
+
+>> name.remove("ashique")
+will remove the elements
+
+>> name.pop(2)  = can remove based on index number
+>> name.pop()  = will remove last elemnts defult
+>> del nums[2:] = will remove multiple elements
+
+>> num.extend([10,11]) = Extending the List items
+>> min(num) = get the minimum vaue
+>> max(num) = get maximum value
+>> sum(num) = sum value
+>> num.sort()  = sorting
+
+
+Built-in List Functions & Methods
+Python includes the following list functions −
+
+1	cmp(list1, list2) = Compares elements of both lists.
+2	len(list)         = Gives the total length of the list.
+3	max(list)         = Returns item from the list with max value.
+4	min(list)         = Returns item from the list with min value.
+5	list(seq)         = Converts a tuple into list.
+
+
+Python includes following list methods
+
+1	list.append(obj)  = Appends object obj to list
+2	list.count(obj)   = Returns count of how many times obj occurs in list
+3	list.extend(seq)  = Appends the contents of seq to list
+4	list.index(obj)   = Returns the lowest index in list that obj appears
+5	list.insert(index, obj) = Inserts object obj into list at offset index
+6	list.pop(obj=list[-1]) = Removes and returns last object or obj from list
+7	list.remove(obj)  = Removes object obj from list
+8	list.reverse()  =  Reverses objects of list in place
+9	list.sort([func]) = Sorts objects of list, use compare func if given
+
+===============================================================================
+
+Tuples   =  ()
+--------
+
+List can change the values, it is mutable but tuples is not
+
+Tuples iteration is fast than Lists.
+
+>> tup = (10,11,12)
+>> tup
+(10,11,12)
+>>> type(tup)
+<type 'tuple'>
+>> tup[1]
+11
+>>tup.count(10)  = count will count how many item in tuples
+1
+
+updating tuples = concatinating
+ 
+ tup1 = ("a","b","c")
+ tup2 = (1,2,3)
+
+ tup3 = tup1 + tup2
+
+ print tup3
+
+Deleting Tuple
+
+ del tup3
+
+Basic Tuple operation
+---------------------
+len((1, 2, 3))		      3		       		 Length
+(1, 2, 3) + (4, 5, 6)	(1, 2, 3, 4, 5, 6)		Concatenation
+('Hi!',) * 4		('Hi!', 'Hi!', 'Hi!', 'Hi!')	Repetition
+3 in (1, 2, 3)	True					Membership
+for x in (1, 2, 3): print x,		1 2 3		Iteration
+
+
+	Function with Description
+1	cmp(tuple1, tuple2) = Compares elements of both tuples.
+2	len(tuple)          = Gives the total length of the tuple.
+3	max(tuple)          = Returns item from the tuple with max value.
+4	min(tuple)          = Returns item from the tuple with min value.
+5	tuple(seq)          = Converts a list into tuple.
+
+==================================================================
+
+
+Set -   {}
+-------
+Almost same as list
+Set wont maintian the sequence and wont support duplicate value.
+
+ s = {22,33,44,46,64,64}
+ s
+ {22,33,44,46,64,64}
+ indexing also not supported because there is no sequence
+
+
+>>> set = {25,35,45,55}
+>>> type(set)
+<type 'set'>
+
+
+String - ""
+----------
+
+String literals in python are surrounded by either single quotation marks, or double quotation marks.
+
+'hello' is the same as "hello"
+
+print("Hello")
+print('Hello')
+
+>>> str = "abc"
+>>> type(str)
+<type 'str'>
+
+- Assign String to a Variable
+ -------------------------
+a = "Hello"
+print(a)
+
+- Multiline Strings  - You can use three double quotes Or three single quotes
+---------------------
+a = """Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua."""
+print(a)
+
+Strings are Arrays
+-----------------
+a = "Hello, World!"
+print(a[1])
+
+Slicing
+-------
+You can return a range of characters by using the slice syntax.
+b = "Hello, World!"
+print(b[2:5])
+
+Negative Indexing
+-----------------
+b = "Hello, World!"
+print(b[-5:-2])
+
+O/p = orl
+
+String Length
+-------------
+a = "Hello, World!"
+print(len(a))
+
+
+String Methods
+--------------
+Python has a set of built-in methods that you can use on strings.
+
+The strip() method removes any whitespace from the beginning or the end:
+
+txt = " Hello World "
+x = txt.strip()
+
+The lower() method returns the string in lower case:
+a = "Hello, World!"
+print(a.lower())
+
+The upper() method returns the string in upper case:
+a = "Hello, World!"
+print(a.upper())
+
+The replace() method replaces a string with another string:
+a = "Hello, World!"
+print(a.replace("H", "J"))
+
+The split() method splits the string into substrings if it finds instances of the separator:
+a = "Hello, World!"
+print(a.split(",")) # returns ['Hello', ' World!']
+
+
+Check String
+To check if a certain phrase or character is present in a string, we can use the keywords in or not in.
+
+txt = "The rain in Spain stays mainly in the plain"
+x = "ain" in txt
+print(x)
+
+Check if the phrase "ain" is NOT present in the following text:
+txt = "The rain in Spain stays mainly in the plain"
+x = "ain" not in txt
+print(x) 
+
+String Concatenation
+---------------------
+a = "Hello"
+b = "World"
+c = a + b
+print(c)
+
+
+To add a space between them, add a " ":
+a = "Hello"
+b = "World"
+c = a + " " + b
+print(c)
+
+
+
+String Format
+-------------
+As we learned in the Python Variables chapter, we cannot combine strings and numbers like this:
+age = 36
+txt = "My name is John, I am " + age
+print(txt)
+
+But we can combine strings and numbers by using the format() method!
+
+The format() method takes the passed arguments, formats them, and places them in the string where the placeholders {} are:
+
+age = 36
+txt = "My name is John, and I am {}"
+print(txt.format(age))
+
+Finding Index
+-------------
+astring = "Hello world!"
+print(astring.index("o"))
+
+o/p = 4
+
+More formats
+
+quantity = 3
+itemno = 567
+price = 49.95
+myorder = "I want {} pieces of item {} for {} dollars."
+print(myorder.format(quantity, itemno, price))
+
+You can use index numbers {0} to be sure the arguments are placed in the correct placeholders:
+quantity = 3
+itemno = 567
+price = 49.95
+myorder = "I want to pay {2} dollars for {0} pieces of item {1}."
+print(myorder.format(quantity, itemno, price))
+
+
+range
+-------
+>>> range(10)
+range(0, 10)
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+Dictionary- OR Mapping
+----------
+
+A dictionary is a collection which is unordered, changeable and indexed. In Python dictionaries are written with curly brackets, and they have keys and values.
+
+Dictionary are indexed with their keys
+
+When you have huge amount of data and you want fetch data in efficient way or in a fast way every value you can assign a key.
+
+Dictionary key should be uniq
+
+>>> dic = {'arun':'samsung','ashique':'iphone'}
+>>> dic
+{'arun': 'samsung', 'ashique': 'iphone'}
+>>> dic.keys()
+dict_keys(['arun', 'ashique'])
+>>> dic.values()
+dict_values(['samsung', 'iphone'])
+>>> dic['arun']
+'samsung'
+>>> dic['ashique']
+'iphone'
+>>> 
+OR
+>>> dic.get('ashique')
+'iphone'
+
+Another Way 
+-----------
+>>> abc = {
+...   "car": "Benz",
+...   "Year": 1999,
+...   "Ma" : 444,
+...   "test": 4444,
+... }
+>>> abc
+{'test': 4444, 'car': 'Benz', 'Ma': 444, 'Year': 1999}
+>>> 
+
+Dictionary Length
+--------------------
+To determine how many items (key-value pairs) a dictionary has, use the len() method.
+
+print(len(abc))
+
+
+Change Values
+----------------
+You can change the value of a specific item by referring to its key name:
+
+>>> abc["Ma"] = 555
+>>> abc
+{'test': 4444, 'car': 'Benz', 'Ma': 555, 'Year': 1999}
+
+
+Adding a value
+---------------
+>>> abc["Latest"] = "MG"
+>>> abc
+
+
+Deleting a value
+----------------
+>>> abc.pop("Ma")
+555
+
+OR
+
+>>> del abc["Ma"]
+>> del abc   will remove complete dictionary
+
+Clearing values
+-------------
+>>abc.clear()
+
+Copy one dictionary to another
+------------------------------
+>>> abc
+{'New': 'abc'}
+>>> 
+>>> bbc = abc.copy()
+>>> bbc
+{'New': 'abc'}
+>>> 
+
+Another way to make a copy is to use the built-in method dict().
+
+>>> cbc = dict(abc)
+>>> cbc
+{'New': 'abc'}
+>>> 
+
+
+The dict() Constructor
+It is also possible to use the dict() constructor to make a new dictionary:
+
+>>> dictionary = dict(brand="Benz", model="mercidez", year=2017)
+>>> dictionary
+{'brand': 'Benz', 'year': 2017, 'model': 'mercidez'}
+>>> 
+																	
+
+
+
+
+
+
+
+
+
+
+
+
+
+

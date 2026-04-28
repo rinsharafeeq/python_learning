@@ -1,0 +1,100 @@
+
+
+Input from Users.
+-----------------
+
+>>> input()
+test
+'test'
+>>> input("Give your Name :")
+Give your Name :Ashique
+'Ashique'
+
+
+age = raw_input()  =  2.x 
+age = input()  =  3.x 
+
+>>> a=input()
+
+
+>>> Name = input("Give your Name")
+Give your Nameashique
+>>> print("My name is", Name)
+My name is ashique
+>>> 
+
+
+eg:-
+x = input()
+y = input()
+z = x + y
+print(z)
+
+add a parameter x = input("Enter a number")
+
+Always giving str format
+
+x = int(input("Enter Firsrt Number"))
+
+
+Restriction for character 
+------------------------
+eg:-
+ch = input("Enter a character")
+print(ch)
+out = if you give mutple also will give you full
+
+print(ch[0])
+
+else
+
+ch = input("Enter a character")[0]
+
+
+eval
+-----
+
+if you put 2 + 3 + 4 will 
+
+result = eval(input("Enter an exprssion")
+print(result)
+
+execution:-
+Enter an exprssion 2 + 3 + 7
+12
+
+
+Argument method  :- Argument will take value from command line
+-------------
+
+import sys
+x = sys.argv[1]
+y = sys.argv[2]
+z= x + y
+print(x)
+
+>test.py 6 2
+62
+>
+
+x=int(sys.argv[1])
+y=int(sys.argv[1])
+
+----------------------
+import sys
+
+x = int(sys.argv[1])
+y = int(sys.argv[2])
+z = x + y
+print(z)
+script = sys.argv[0]
+print("my script name is", script)
+
+
+-----------------------
+from sys import argv
+
+first, second = argv
+
+print "first arg is ", first
+print "second arg is", second

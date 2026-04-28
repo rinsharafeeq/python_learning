@@ -1,0 +1,168 @@
+Scope of Variables
+------------------
+All variables in a program may not be accessible at all locations in that program. This depends on where you have declared a variable.
+
+The scope of a variable determines the portion of the program where you can access a particular identifier. There are two basic scopes of variables in Python −
+
+ - Global variables
+ - Local variables
+
+A global variable can be reached anywhere in the code, a local only in the scope.
+
+
+Variables that are defined inside a function body have a local scope, and those defined outside have a global scope.
+
+This means that local variables can be accessed only inside the function in which they are declared, whereas global variables can be accessed throughout the program body by all functions. When you call a function, the variables declared inside it are brought into scope. 
+
+
+Example =
+
+#!/usr/bin/python
+
+total = 0; # This is global variable.
+
+def sum( arg1, arg2 ):
+   # Add both the parameters and return them."
+   total = arg1 + arg2; # Here total is local variable.
+   print "Inside the function local total : ", total
+   return total;
+
+# Now you can call sum function
+sum( 10, 20 );
+print "Outside the function global total : ", total 
+
+
+Using Global variable to Function 
+---------------------------
+
+a = 10
+def greet():
+    a = 20
+    print(a)
+
+greet()
+print(a)
+
+It will get 20 and 10 . 
+
+also if we create another varible under a function and if we trying to use globally wont execute
+
+EG:-
+
+a = 10
+def greet():
+    a = 20
+    b = 20
+    print(a)
+
+greet():
+print(a)
+print(b)
+
+You will get error saying that "b" is not defined.
+
+if you are not declared any varible localy automatically it will take global varible value..
+
+eg:-
+
+a = 10
+def greet():
+    print(a)
+
+print(a)
+
+Will print output 10 and 10
+
+
+If it is not defined any local variable by default it will take global variable
+
+
+if you want to change a global variable value from function can use global keyword.
+
+
+def greet():
+    global a
+    a = 25
+    print("Local Varible" , a)
+    print(a)
+
+greet()
+print(a)
+
+
+will get it 25 
+
+--------------
+
+using local and global variable in same function
+------------------------------------------------
+
+
+a = 10
+def greet():
+    a = 9
+    print("Local variable" ,a )
+    
+    x = globals()['a']
+    print("Global Varible", x)
+
+
+greet()
+print(a)
+
+For changing global variable value from inside a function
+---------------------------------------------------------
+a = 10
+def greet():
+    a = 9
+    print("Local variable" ,a )
+    
+    globals()['a'] = 34
+    
+    x = globals()['a']
+    print("Global Varible", x)
+   
+
+
+greet()
+print(a)
+
+
+Recursion in Python Function
+============================
+
+Recursion means Calling a function from itself.
+
+
+def greeting():
+    print("Hello")
+    greeting()
+
+greeting()
+
+If you want to execute some number of time it will execute. it will do continues iteration. by default python will do 1000 times iteration.
+
+For getting the default iteration limit 
+
+>>> import sys
+>>> print(sys.getrecursionlimit())
+1000
+
+If you want do set the recursion into a specific number ,
+
+
+import sys
+sys.setrecursionlimit(2000)
+
+
+i = 0
+def greet():
+    global i
+    i += 1
+    print("Hello = ", i)
+    greet()
+
+greet()
+
+
+

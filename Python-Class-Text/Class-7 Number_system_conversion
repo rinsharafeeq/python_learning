@@ -1,0 +1,37 @@
+
+
+Binary
+Decimal
+Octal
+Hexa-decimal  - Mac address and IPv4
+
+
+Decimal -base 10  = 0 - 9
+Binary  -base 2   = 0 - 1
+octal   -base 8   = 0 - 7
+exadecimal - base -16 = 0 - 9 and a - f
+>>bin(25)
+'0b11001'    0b= is identifief for binary
+                       
+>>0b11001
+25
+
+>>oct(25)
+'0o31'
+
+>>hex(25)
+'0xa'
+
+>>0xf
+15
+
+>>int(0b110)   = converting binary to decimal
+
+1100101
+
+
+
+
+
+
+

@@ -1,0 +1,252 @@
+Python Modules
+--------------
+
+What is a Module?
+------------------
+module is a file consisting of Python code. A module can define functions, classes and variables. A module can also include runnable code.
+
+Consider a module to be the same as a code library.
+
+A file containing a set of functions you want to include in your application.
+
+
+
+Create a Module
+-----------------
+To create a module just save the code you want in a file with the file extension .py:
+
+Save this code in a file named mymodule.py
+
+def greeting(name):
+  print("Hello, " + name)
+
+
+Use a Module
+-------------
+Now we can use the module we just created, by using the import statement:
+
+Import the module named mymodule, and call the greeting function:
+
+import mymodule
+mymodule.greeting("Jonathan")
+
+Note: When using a function from a module, use the syntax: module_name.function_name.
+
+
+Locating Modules
+---------------------
+When you import a module, the Python interpreter searches for the module in the following sequences −
+
+  1 - The current directory.
+
+  2 - If the module isn't found, Python then searches each directory in the shell variable PYTHONPATH.
+
+  3 - If all else fails, Python checks the default path. On UNIX, this default path is normally /usr/local/lib/python/.
+
+
+The PYTHONPATH Variable
+The PYTHONPATH is an environment variable, consisting of a list of directories. The syntax of PYTHONPATH is the same as that of the shell variable PATH.
+
+And here is a typical PYTHONPATH from a UNIX system −
+
+
+export PYTHONPATH="/home/ashique/india"
+
+OR
+
+import sys
+sys.path.append('/home/test/')
+
+
+
+Variables in Module
+--------------------
+The module can contain functions, as already described, but also variables of all types (arrays, dictionaries, objects etc):
+
+Save this code in the file mymodule.py
+
+person1 = {
+  "name": "John",
+  "age": 36,
+  "country": "Norway"
+}
+
+
+Import the module named mymodule, and access the person1 dictionary:
+
+import mymodule
+a = mymodule.person1["age"]
+print(a)
+
+
+Naming a Module
+----------------
+You can name the module file whatever you like, but it must have the file extension .py
+
+
+Re-naming a Module
+-------------------
+You can create an alias when you import a module, by using the as keyword:
+
+Create an alias for mymodule called mx:
+
+import mymodule as mx
+a = mx.person1["age"]
+print(a)
+
+
+Built-in Modules
+-----------------
+
+There are several built-in modules in Python, which you can import whenever you like.
+
+Import and use the platform module:
+
+
+import platform
+x = platform.system()
+print(x)
+
+
+Using the dir() Function
+--------------------------
+There is a built-in function to list all the function names (or variable names) in a module. The dir() function:
+
+List all the defined names belonging to the platform module:
+
+	import platform
+x = dir(platform)
+print(x)
+
+Note: The dir() function can be used on all modules, also the ones you create yourself.
+
+import platform
+print(dir(calculation))
+
+
+
+
+Import From Module
+-------------------
+You can choose to import only parts from a module, by using the from keyword.
+
+
+The module named mymodule has one function and one dictionary:
+
+def greeting(name):
+  print("Hello, " + name)
+
+person1 = {
+  "name": "John",
+  "age": 36,
+  "country": "Norway"
+}
+
+Import only the person1 dictionary from the module:
+
+from mymodule import person1   =  importing single module
+print (person1["age"])
+
+NOTE:-When importing using the from keyword, do not use the module name when referring to elements in the module. Example: person1["age"], not mymodule.person1["age"]
+
+
+importing multiple module
+----------------------------
+from mymodule import person1, person2
+
+Importing all funtion or methods from a module 
+-------------------------
+
+from modname import *
+
+
+
+=================================
+
+Example Excercise
+----------------
+
+vim calculation.py
+
+def add(x,y):
+    return (x+y)
+def sub(x,y):
+    return (x-y)
+
+
+vim module_test.py
+
+import calculation            #Importing calculation module
+print(calculation.add(1,2))    #Calling function defined in add module.
+
+-----------------------------------
+
+from calculation import add
+print(add(1,2))
+
+
+from calculation import add,sub
+
+
+from calculation import *
+print(add(1,2))
+print(sub(3,2))
+
+Renaming imported Module
+-------------------------
+import calculation as cal
+print(cal.add(1,2))
+
+
+
+==============================================
+
+Special Builtin Variable  (  __name__ and __main__ )
+------------------------
+
+__name__ is a built-in variable which evaluates to the name of the current module.
+
+Whenever you create a python script by defult it will go to __main__ 
+
+cat test1.py
+
+print(__name__)
+
+THis is the way our intrepeter determine the hirarcy of a script 
+
+EG-
+
+vim file1.py 
+
+print("File1 __name__ = %s" %__name__ )
+if __name__ == "__main__": 
+    print("File1 is being run directly")
+else: 
+    print("File1 is being imported")
+
+O/P File1 is being run directly
+
+
+vim file2.py
+
+import file1 
+print("File2 __name__ = %s" %__name__)
+  
+if __name__ == "__main__": 
+    print("File2 is being run directly")
+else: 
+    print("File2 is being imported")
+
+:wq
+
+
+#python file2.py
+
+File1 __name__ = file1
+File1 is being imported
+File2 __name__ = __main__
+File2 is being run directly
+
+
+
+

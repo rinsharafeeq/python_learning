@@ -1,0 +1,514 @@
+https://stackabuse.com/object-oriented-programming-in-python/  
+
+
+OOP- object oriented programming.
+------------------------------------
+Almost everything in Python is an object, with its properties and methods.
+
+object oriented programming is completly based on an object and it is core related with it.
+
+
+Class = Class will have Common features or it is a blue print.
+
+  ex:- human beings ,  2-legs and 2-hand
+       birds - wings and 2 legs
+
+object =  It is a member of an class
+   ex- Me , you , raju , Ravi
+
+
+
+it execute as basis of object.
+
+first need to know abut the class.
+
+     
+   human = class 
+   ashique = object 
+
+Syntax of writing class in python.
+-----------------------
+class Class_name:
+      def function_name(self,argument1,argument2..):
+          #body of function
+	  ...
+          return <value>
+
+
+Real Word Example
+--------------------
+
+Mobile  = Real World Entity
+
+Properies of mobile =
+Make call
+Sent sms
+Accept Calls
+Make call
+access Photos
+
+
+Object = Samsung , Iphone
+
+
+
+Example starting from
+========================
+
+class ashique:
+	print "this is my class"
+	a = 10
+
+
+print (ashique.a)
+
+out = 10
+
+------------------------------
+OR
+
+>>> class Human:
+...     eyes = 2
+...     legs = 2
+... 
+>>> 
+>>> Human.eyes
+2
+>>> Human.legs
+2
+
+-----------------------
+
+class Car:
+	wheel = 4
+	door = 10
+	print("This is my class")
+
+
+Benz = Car()
+print(Benz.wheel)
+
+Toyota = Car()
+print(Toyota.door)
+
+Synx of calling a class
+------------------------
+obj = Class()
+
+Note : constructor = while creating an object for calling automatically using constructorr
+
+---------------------------------------------------------
+
+class Human:    - name of function
+      eyes = 2
+      legs = 2
+      address = 'earth'
+ 
+      def breath(self):   -   functions of a Human Class (When ever you define a function under class always need to keep (self) key word )
+ 	  print "breating"
+ 
+      def walk(self):
+ 	  print "walking"
+        
+objectname = classname()  = sync of creating object
+Ali = Human()
+
+execute:-
+
+>Ali = Human()
+>Ali.eyes
+2
+>Ali.legs
+2
+>Ali.address
+'earth'
+>Ali.walk()
+walking
+>Ali.breath()
+breathing
+
+Note:= whenver u define a function under class always need to keep self.
+
+SUB-Class
+----------
+Creating Child class or Sub class. Human have lot of child (teacher,engineer....)
+
+
+class Teacher(Human):
+      def teach(self):
+          print ("Teaching")
+
+class Artist(Human):
+      def teach(self):
+          print ("painting")
+
+
+ali = Teacher()
+
+ali.teach()
+
+-------------------------------------
+
+Method Overriding
+-----------------
+
+Same method Can use other sub class . that is called Method overriding
+
+Eg=
+
+
+class Teacher:
+      def teach(self):
+          print ("Teaching")
+
+class Bioteacher(Teacher):
+      pass
+
+class EngTeacher(Teacher):
+      pass
+
+
+anil = Teacher()
+anil.teach
+
+will get teaching
+
+sunil = Bioteacher
+sunil.teach
+
+Same method can use for other subclass that is method overriding
+Eg:-
+
+class Teacher:
+      def teach(self):
+          print ("Teaching")
+
+class Bioteacher(Teacher):
+      def teach(self):
+          print ("Teaching Biology")
+
+class EngTeacher(Teacher):
+      def teach(self):
+          print ("Teaching English")
+
+
+anil = Bioteacher()
+anil.teach
+
+O/P = Teaching Biology
+
+sunil = EngTeacher
+sunil.teach
+
+O/P = Teaching English
+
+
+Note :- if a method can see in Parent and child class here method overriding is happening
+
+
+Method to Calling in isside diffrent methods
+----------------------------------
+
+class Animal:
+      def move(self): 
+          print("Moving")
+
+      def eating(self):
+          print("eating Food")
+ 
+
+Giraff = Animal()
+Giraff.move()
+O/P Moving
+
+Giraff.eating()
+O/P eating Food
+
+Next I am going to create a new mothod which i want to call other mothods
+
+
+      def find_food(self):
+           self.move()
+           self.eating()  
+
+Giraff.find_food()
+O/P = 
+Moving
+eating Food
+
+Again can use this into other methods
+
+      
+       def final(self):
+           self.find_food()
+
+       
+Giraff.final()
+  
+
+SELF - what is self
+-------------------
+
+function and method =
+function is normal value. we can use anywhere like print , range ..etc
+methods = a function which is called with object eg = puppy.legs (puppy is an object from animal class)
+Properties = It is a common features = eg Human 2 legs 2 hand 1 Head
+
+
+class animal():
+      legs = 0
+
+      def walk(self):
+          print("walking")
+
+puppy = animal()
+puppy.legs = 4    =  it is assingning partucular number.
+
+print (puppy.legs)
+
+you will get 4 
+
+Self example
+
+class animal():
+      legs = 0
+
+      def walk(self):
+          print("walking")
+      
+      def count_legs(self):
+          print("number of legs %d" %legs)
+
+
+puppy = Animal()
+puppy.legs = 4
+
+Kangaroo = Animal()
+Kangaroo.legs = 2
+
+fish = Animal()
+
+In this case whenever you tried to run you will get legs not defined error.
+
+becuse count_legs function no idea about legs variable
+
+ if you make %puppy.legs will get puppy legs as 4 but cannot use other animals
+
+so that case you have to use "%self.legs"
+---------------------------------------------
+Example:-
+
+class animal():
+      legs = 1
+
+      def walk(self):
+          print("walking")
+
+      def count_legs(self):
+          print("number of legs %d" %self.legs)
+
+puppy = animal()
+puppy.legs = 5
+print(puppy.legs)
+print(puppy.count_legs())
+
+
+dog = animal()
+dog.legs = 4
+print(dog.legs)
+print(dog.count_legs())
+
+fish = animal()
+print(fish.legs)
+print(fish.count_legs())
+
+
+
+Multiple Inheritance
+--------------------
+
+inheritance means a class is a child of other parent class 
+
+  eg = Human
+
+       Teacher(Human):
+
+Multiple Inheritance means a class can be a cild of mutiple class
+
+Eg:-
+
+class One:
+      def slate(self):
+          print("slate from class one")
+
+class Two:
+      def slate(self):
+          print("slate from class Two")
+
+      def notebook(self):
+          print("Notebook from class Two")
+
+class Three:
+      def notebook(self):
+          print("Notebook from class Three")
+      def textbook(self):
+          print("Textbook from Class Three")
+
+class Student(One, Two, Three):   =  multiple inheritance
+      pass
+
+
+akhil = Student()
+
+akhil.slate()
+O/P = slate from class one
+
+akil.notebook()
+O/P = Notebook from class Two
+
+akil.textbook()
+O/P = Textbook from Class Three
+
+
+--------------------------------
+
+
+Calling a methods with parameters,
+
+
+class Car:
+    car_count = 0
+    def start(self, name, make, model):
+        print ("Engine started")
+        self.name = name
+        self.make = make
+        self.model = model
+
+
+
+Benz = Car()
+
+print(Benz.start("Corolla", "Toyota" , "2019"))
+print(Benz.name)
+print(Benz.make)
+
+
+
+
+--------------------------
+Built-In Class Attributes
+--------------------------
+
+Every Python class keeps following built-in attributes and they can be accessed using dot operator like any other attribute −
+
+__init__   = initialisation, auto calling for a function
+__del__    = Deleting for a function
+__dict__   − Dictionary containing the class's namespace.
+__doc__    − Class documentation string or none, if undefined.
+__name__   − Class name.
+__module__ − Module name in which the class is defined. This attribute is "__main__" in interactive mode.
+__bases__  − A possibly empty tuple containing the base classes, in the order of their occurrence in the base class list
+
+
+__init__ method
+
+There are some in built method can use in python
+
+__init__ = if you want to create any defult properties when you call any object can use __init
+
+class animal():
+      legs = 2
+
+      def __init__(self):
+          print("Newly created method")
+
+      def walk(self):
+          print("walking")
+
+lion = animal()
+
+if we execute always "Newly created method" will pop up
+
+Class Human:
+      def __init__(self, name):
+      print("I am created")
+      self.name = name
+
+
+a = Human()
+will get error. becuse whenever we want to call this object must required one positional argument
+
+a = Human("Anil kumar")
+I am created
+a.name
+'anil kumar'
+ 
+
+Class Human:
+      def __init__(self, name,age):
+      print("I am created")
+      self.name = name
+      self.age = age
+
+a = Human('anil kumar', 55)
+
+a.age
+
+
+__del__ 
+-------
+
+   def __del__(self):
+       print("%s is destroyed " %self.name)
+
+
+
+del a
+
+Example Programs
+-----------------
+
+#!/usr/bin/python
+
+class Employee:
+   'Common base class for all employees'
+   empCount = 0
+
+   def __init__(self, name, salary):
+      self.name = name
+      self.salary = salary
+      Employee.empCount += 1
+   
+   def displayCount(self):
+     print "Total Employee %d" % Employee.empCount
+
+   def displayEmployee(self):
+      print "Name : ", self.name,  ", Salary: ", self.salary
+
+print "Employee.__doc__:", Employee.__doc__
+print "Employee.__name__:", Employee.__name__
+print "Employee.__module__:", Employee.__module__
+print "Employee.__bases__:", Employee.__bases__
+print "Employee.__dict__:", Employee.__dict__
+
+
+
+Out =
+
+Employee.__doc__: Common base class for all employees
+Employee.__name__: Employee
+Employee.__module__: __main__
+Employee.__bases__: ()
+Employee.__dict__: {'__module__': '__main__', 'displayCount':
+<function displayCount at 0xb7c84994>, 'empCount': 2, 
+'displayEmployee': <function displayEmployee at 0xb7c8441c>, 
+'__doc__': 'Common base class for all employees', 
+'__init__': <function __init__ at 0xb7c846bc>}
+
+
+
+
+
+
+  
+

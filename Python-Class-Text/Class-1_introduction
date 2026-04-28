@@ -1,0 +1,164 @@
+What is python
+-----------
+
+python is an interpreted, high-level, object oriented and high level programming language also it is called as general-purpose programming language.  Created by Guido van Rossum and first released in 1991, 
+
+
+java 1995  python - 1989
+
+- one of the fastest growing Language 
+
+
+ What terms 
+--------
+
+Terms of number of developers who are using
+
+Terms of number of libraries we have
+
+Terms of number of companies are using it
+
+Terms of Terms of areas we can implemted
+
+
+
+
+
+Benefits of Learning Python
+------------------------------
+1) Python can be used to develop prototypes, and quickly because it is so easy to work with and read.
+
+2) Most automation, data mining, and big data platforms rely on Python. This is because it is the ideal language to work with for general purpose tasks.
+
+3) Python allows for a more productive coding environment than massive languages like C# and Java. Experienced coders tend to stay more organized and productive when working with Python, as well.
+
+4) Python is easy to read, even if you're not a skilled programmer. Anyone can begin working with the language, all it takes is a bit of patience and a lot of practice. Plus, this makes it an ideal candidate for use among multi-programmer and large development teams.
+
+5) Python powers Django, a complete and open source web application framework. Frameworks - like Ruby on Rails - can be used to simplify the development process.
+
+6) It has a massive support base thanks to the fact that it is open source and community developed. Millions of like-minded developers work with the language on a daily basis and continue to improve core functionality. The latest version of Python continues to receive enhancements and updates as time progresses. This is a great way to network with other developers.
+
+
+Python is widely used, including by a number of big companies like Google, Pinterest, Instagram, Disney, Yahoo!, youtube Nokia, IBM, and many others.
+
+
+Now because of advance tecnology of machine learning and AI
+
+
+google, yahoo ,youtube, Nasa ...
+
+
+Important Uses of Python
+---------------------------
+
+1. Applications:
+Python can be used to develop different applications like web applications, 
+graphic user interface based applications, 
+software development application, 
+scientific and numeric applications, 
+network programming, 
+Games and 3D applications 
+business applications. 
+It makes an interactive interface and easy development of applications.
+Machine Learning
+Artificila intelligence
+
+2. Access of Database:
+Uses of Python also helps in accessing the database easily. Python helps in customizing the interfaces of different databases like MySQL, Oracle, Microsoft SQL Server, PostgreSQL, and other databases
+
+
+
+
+----------------------------------------------------------------------
+
+Python installation and setup 
+
+python -V
+
+alias python=python3  = It is temperory solution 
+
+insert this entry into .bashrc file for making permanent
+
+
+
+What is compiler and Interpreters
+----------------------------------
+
+Compilers :
+
+  Convert high level program to its machine or CPU instruction sets I,e machine bytecode. Therefore to do this compiler checks for its syntax first and convert whole program to machine or CPU understandable bytecode.
+
+ Ex: c, c++, Java
+ 
+  c = gcc
+  java = javac
+
+Interpreters :
+
+  Interpreters work differently , they take each expression or line of program and convert to machine code and execute it. Therefore if any syntax error in some line of interpreted language, you will get error only when that line is encountered
+
+Ex : Unix shell
+
+
+Python is a “COMPILED INTERPRETED” language.
+
+Means when Python program is run,
+
+ 1 - First Python checks for program syntax
+ 2 - Compiles and converts it to bytecode and directly bytecode is loaded in system memory.
+ 3 - Then compiled bytecode interpreted from memory to execute it.
+
+
+Python Virtual Machine (PVM)   similiar to JVM in java
+-------------------------------
+
+  Once our program has been compiled into byte code, it is shipped off for execution to Python Virtual Machine (PVM). The PVM is not a separate program. It need not be installed by itself. Actually, the PVM is just a big loop that iterates through our byte code instruction, one by one, to carry out their operations. The PVM is the runtime engine of Python. It's always present as part of the Python system. It's the component that truly runs our scripts. Technically it's just the last step of what is called the Python interpreter.
+
+
+
+Create first program
+---------------------
+
+#vim first.py  = py is the extension of python
+
+print("Hello World")
+
+:wq
+
+#python first.py  
+Hello World
+
+Here we have to mention the interpreter i.e python
+
+if you want to execute this from unix shell you must have to mention the shebang line in first line and file should be executable
+
+#which python
+/usr/bin/python
+
+so you need to keep this in first line
+ 
+#vim first.py
+#!/usr/bin/python
+print("Hello World")
+
+#chmod +x first.py
+#./first.py
+Hello World
+
+
+Python wont create any pyc file by default . we can create pyc file using folloe methods
+
+#python -m py_compile my_first_simple_program.py
+
+OR
+
+#python
+>>import py_compile
+>>py_compile.compile('first.py')
+
+
+
+
+
+
+

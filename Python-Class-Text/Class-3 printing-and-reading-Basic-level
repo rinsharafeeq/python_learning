@@ -1,0 +1,284 @@
+
+
+Commenting Lines In Python
+--------------------------
+
+ - single Line commenting
+
+#sdkfjhsadkjfkdsakjfhdsakjf
+#kfdskjfhskdjhf
+
+ - Comment after code
+
+print("This is my first script")  # This is for printingn
+
+
+ - Multiline commenting
+
+'''
+print("This is my first script")  # This is for printingn
+print("This is my first script")  # This is for printingn
+'''
+
+
+word = 'word'
+sentence = "This is a sentence."
+paragraph = """This s a paragraph. It is
+made up of multiple lines and sentences."""
+
+
+Printing 
+---------
+
+print "Hello world"  = 2.x
+print("Hello","World") = 3.x
+
+ Double qutes or single qutes is need to add any srings. if you not give it will take as variable.
+
+if you want print anything with doble qutes need to do with single qutes.
+
+Example:-
+
+print ('ashique "laptop"')
+print ("ashique 'laptop'")
+print ('ashique\`s "laptop"') 
+print("I'd much rather you 'not'.")
+print('I "said" do not touch this.')
+print('This laptop\'s "owner" is me')
+
+ 
+we can use arithmatic operations 3 + 2 in print
+
+>> 8 / 4  = python 2 wont give you without float 3 will give 2.0 flot value
+  
+   8 // 4
+   
+  >> 8 + 9 - 3
+
+  >> 8 + 2 * 3
+  14
+  >> (8+2) * 3
+  30
+  based on bodmas
+  
+  Bracket , Orders , Devide , multiply,  add , substract
+
+  >> 2 * 2 * 2   for seeing power of a value
+  8
+  >> 2 ** 3
+  8
+     
+  >> 10 % 3 for getting reminder 
+
+
+print("Answer is", 3 + 5) 
+
+print('ashique')
+
+print ("What is 5 - 7?", 5 - 7)
+
+print "Is it greater or equal?", 5 >= - 2
+
+>>'ashique' + 'ashique'
+ 
+>> 10 * 'ashique'
+
+print 10 * 'ashique'
+
+print ('c:\abc\navin')
+
+\n have special meaning for coming new line
+
+print (r'c:\abc\navin')                  = r = raw string
+
+ 
+
+
+ cars = 10
+ seats = cars + 10  
+ print "Number of cars", cars
+
+ eg:- print "car is", cars, "seats", seats.
+
+
+
+
+ variables
+------------
+
+   Variables are nothing but reserved memory locations to store values. This means that when you create a variable you reserve some space in memory.
+ 
+  x = 3
+  x = variable name
+  3 = value
+
+  variable is an container you can put your value here x is your container name and 3 is the value 
+ 
+
+ Variabl name should not be a numeric value also it wont support any operator eg:- ab-test=10
+
+------------------------------
+>>> car='bmw'
+>>> car="bmw"
+>>> car
+'bmw'
+>>> print('Hello world')
+Hello world
+>>> print(car)
+bmw
+>>> print('Your variable name is ', car)
+Your variable name is  bmw
+>>> 
+
+
+----------------------------------------------
+counter = 100          # An integer assignment
+miles   = 1000.0       # A floating point
+name    = "John"       # A string
+	
+print(counter)
+print(miles)
+print(name)
+---------------------------------------------
+Assigning multiple variable for multiple value
+
+a,b,c = 1,2,"john"
+
+Exampe:-
+
+>>> a,b = 1,2
+>>> a
+1
+>>> b
+2
+
+---------------------------------------------
+  >>x = 3
+  >>x + 3
+  y = 3
+  >> x + y
+  >> x = 9 
+  >> x
+  9
+
+ >> x = 5
+ >> x + 10
+ 15
+ >> _ + 20        = underscore using for previous out put as variable
+ 25 
+   
+-------------------------------------------------------
+
+>>name = 'youtube'
+>>name
+'youtube'
+>>name + 'rocks'
+'youtube rocks'
+ 
+Variable Slicing	
+
+ Accessing character from a value
+         
+  >> name = 'youtube'
+  >> name[0] -  print 'y'
+  >> name[-1] - printing 'e'
+  >> name[0:2] first 2 ltter 'as'
+  >> name[1:4] 'outu'
+  >> name[1:] = will print outube  
+  >> name[:-1] = reverse
+  >> name[3:10] = complete
+  
+ string is immutable (once you define we cannot change the value)
+
+>>> name
+'youtube'
+>>> 'my' + name
+'myyoutube'
+>>> 'my' + name[3:]
+'mytube'
+>>> 
+
+  >> myname = 'ashique'
+  >> len(myname)
+  11
+   
+------------------------------------------------------------
+
+  my_name = 'ashique'
+  my_age = 26
+  
+  print("My name is : %s"  % my_name)
+
+  print("My name is %s and My Age is %s "  %(my_name, my_age))
+
+  %s is requred for define a string
+  %d (digit) it is for digit
+
+  %r for debugging - it means we can find whre the variable are declared we will get with single quotes
+  %s and others for displaying to users.
+
+
+print "red",
+print "hat"
+ output will give red hat
+
+print "." * 10
+
+ out will ..........
+
+ 
+print("My Region is %s" % 'india')  = direct variable defining 
+
+print("My Region is %s" % 7887 )  = Note:- 7887 is not a varible so thats why direct mapping will happen without  quotes
+My Region is 7887
+
+month = "jan\nfeb\nmar\napr"
+print month
+jan
+feb
+mar
+
+
+print """
+dsfdafs
+asfsaf
+safsa
+"""
+
+A = """India is my country
+All indias are bro and sis"""
+
+print(A)
+
+
+More about variable
+---------------------
+num = 5       
+id(num)
+8743258
+name = 'ashique'
+id(name)
+8437654
+a=10
+b=10
+id(a)
+id(b) will get same address
+also id(10)
+
+in python whenever you create multiple varible and in case if it is have same data both will point to the same box. That is why python is more memory efficient.
+
+a = 9
+id(a) - it is changed
+
+sdfgfdssgds 
+
+
+
+
+
+
+
+ 
+
+
+
