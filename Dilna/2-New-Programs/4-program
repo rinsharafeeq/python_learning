@@ -1,2 +1,0 @@
-Count how many times a value appears in a list
-Task: Write a function count_occurrences(lst, target) that returns the number of times target appears in lst. Use a for loop.
