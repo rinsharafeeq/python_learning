@@ -1,0 +1,2 @@
+ Reverse a list without using reverse() or slicing [::-1]
+Task: Implement a function reverse_list(lst) that returns a new list with elements in reverse order, using a for loop.
