@@ -1,6 +1,8 @@
 Data Types
 ------------
-Whenever you working in a project very important to undrestand what type of data you are working with so that we can process the data in that format. becuse if you dont process the data in particular format you might face errors or bugs 
+Whenever you working in a project very important to undrestand what type of data you are working
+ with so that we can process the data in that format. becuse if you dont process the data in
+  particular format you might face errors or bugs
 
 What are the data types in python
 ============================
@@ -14,7 +16,8 @@ range
 dictonary
 
     
-None=  When you have a variable and that variable is not assigned with any value that is none . other language it is null
+None=  When you have a variable and that variable is not assigned with any value that is none .
+ other language it is null
 
 >> abc = None
 >>type(abc)
@@ -35,7 +38,7 @@ Numeric/Numbers =
 >> type(num)
 >> abc = 2.5
 >> type(abc)
->> a = 6+5j
+>> a = 5+6j
 >> 
 
 converting one type to another
@@ -46,8 +49,7 @@ converting one type to another
 >>> b = int(a)
 >>> type(b)
 <class 'int'>
->>> b
-5
+>>>
 
 
 Bool is simply means true or false . desision are base on condition
@@ -79,13 +81,18 @@ List , Tuple , set , string, Range
 
 List 
 ------
-The list is a most versatile datatype available in Python which can be written as a list of comma-separated values (items) between square brackets. Important thing about a list is that items in a list need not be of the same type.
+The list is a most versatile datatype available in Python which can be written as a list of
+comma-separated values (items) between square brackets. Important thing about a list is that
+ items in a list need not be of the same type.
 
 If you have diffrent Values (numbers .strinfg..etc ) if you want to group them together we can use list
 
 >>list1 = [12,13,14,55.3,"testing",True]
->>type(list1)
-list
+>>print(type(list1))
+print(list1)
+
+o/p  list
+     [12,13,14,55.3,"testing",true]
 
 
 >>list1 = ['physics', 'chemistry', 1997, 2000];
@@ -102,7 +109,8 @@ List concatination
 >> names = ['ashique','pradeep','shabeeb']   
 >> numbs = [1,2,3,]
 >> mil = [names, numbs]
-[['ashique','pradeep','shabeeb'],[1,2,3,]]
+
+o/p  [['ashique','pradeep','shabeeb'],[1,2,3,]]
   
 >> names.append("new-name")  = appending list item values
 will add
@@ -328,6 +336,10 @@ String Format
 As we learned in the Python Variables chapter, we cannot combine strings and numbers like this:
 age = 36
 txt = "My name is John, I am " + age
+print(txt)
+
+age = 36
+txt = "My name is John, I am " + str(age)
 print(txt)
 
 But we can combine strings and numbers by using the format() method!

@@ -6,5 +6,5 @@ def to_celsius(f):
 def to_fahrenheit(c):
     fahrenheit = (c*9/5)+32
     print(fahrenheit)
-to_celsius(34)
-to_fahrenheit(28)
+to_celsius(10)
+to_fahrenheit(243)

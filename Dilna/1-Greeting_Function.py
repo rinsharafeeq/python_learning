@@ -2,7 +2,7 @@
 # Then call it with three different names.
 
 def greet(name):
-    print(f"hello {name}")
-greet("rinsha")
-greet("rishana")
-greet("dilna")
+    print(f"Hello {name}")
+greet('hello')
+greet('world')
+greet('who are you')

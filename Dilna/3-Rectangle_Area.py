@@ -4,3 +4,10 @@ def rectangle_area(length,width):
     print("area = ",length*width)
 rectangle_area(5,3)
 rectangle_area(2.5,4)
+
+
+
+def rectangle_area(length,width):
+    print("area = ",length*width)
+rectangle_area(5,3)
+rectangle_area(2.5,4)
