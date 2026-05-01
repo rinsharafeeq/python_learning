@@ -1,0 +1,198 @@
+1. Find the average of numbers in a list
+Task: Write a function average(numbers) that takes a list of numbers and returns their average. Use a for loop to sum them.
+
+python
+def average(numbers):
+    total = 0
+    count = 0
+    for num in numbers:
+        total += num
+        count += 1
+    return total / count
+
+# Test
+scores = [78, 92, 85, 67, 90]
+print("Average:", average(scores))   # Expected: 82.4
+2. Filter even numbers from a list
+Task: Create a function filter_even(numbers) which returns a new list containing only the even numbers from the input list.
+
+python
+def filter_even(numbers):
+    evens = []
+    for n in numbers:
+        if n % 2 == 0:
+            evens.append(n)
+    return evens
+
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print("Evens:", filter_even(nums))   # [2, 4, 6, 8, 10]
+3. Reverse a list without using reverse() or slicing [::-1]
+Task: Implement a function reverse_list(lst) that returns a new list with elements in reverse order, using a for loop.
+
+python
+def reverse_list(lst):
+    reversed_lst = []
+    for i in range(len(lst)-1, -1, -1):
+        reversed_lst.append(lst[i])
+    return reversed_lst
+
+original = ["apple", "banana", "cherry"]
+print("Reversed:", reverse_list(original))   # ['cherry', 'banana', 'apple']
+4. Count how many times a value appears in a list
+Task: Write a function count_occurrences(lst, target) that returns the number of times target appears in lst. Use a for loop.
+
+python
+def count_occurrences(lst, target):
+    count = 0
+    for item in lst:
+        if item == target:
+            count += 1
+    return count
+
+data = [1, 3, 5, 3, 7, 3, 9]
+print("Occurrences of 3:", count_occurrences(data, 3))   # 3
+5. Combine two lists into a dictionary (key: value pairs)
+Task: Given keys list and values list of the same length, create a function make_dict(keys, values) that returns a dictionary where each key is paired with the corresponding value. Use a for loop and range.
+
+python
+def make_dict(keys, values):
+    result = {}
+    for i in range(len(keys)):
+        result[keys[i]] = values[i]
+    return result
+
+names = ["Alice", "Bob", "Charlie"]
+ages = [25, 30, 35]
+print(make_dict(names, ages))   # {'Alice': 25, 'Bob': 30, 'Charlie': 35}
+
+-------------------------------------------------------
+
+1. Find all pairs in a list that sum to a target value
+Task: Write a function find_pairs(nums, target) that returns a list of unique number pairs (as tuples) from nums that add up to target. Use only loops and conditionals (no itertools).
+
+python
+def find_pairs(nums, target):
+    pairs = []
+    n = len(nums)
+    for i in range(n):
+        for j in range(i + 1, n):   # j starts after i to avoid duplicate pairs and self-pairing
+            if nums[i] + nums[j] == target:
+                pairs.append((nums[i], nums[j]))
+    return pairs
+
+# Example
+numbers = [2, 4, 3, 5, 7, 8, 1]
+target_sum = 9
+print(find_pairs(numbers, target_sum))  
+# Output: [(2, 7), (4, 5), (8, 1)]
+What you practice: Nested loops, avoiding duplicate pairs, tuple creation.
+
+2. Rotate a list to the right by k steps
+Task: Write rotate_right(lst, k) that returns a new list with elements shifted to the right by k positions (elements that fall off the end wrap around to the front). Do not use slicing tricks (e.g., lst[-k:] + lst[:-k]) — use loops.
+
+python
+def rotate_right(lst, k):
+    if not lst:
+        return []
+    n = len(lst)
+    k = k % n               # handle k larger than list length
+    rotated = [0] * n
+    for i in range(n):
+        rotated[(i + k) % n] = lst[i]
+    return rotated
+
+# Example
+my_list = [1, 2, 3, 4, 5]
+print(rotate_right(my_list, 2))   # [4, 5, 1, 2, 3]
+print(rotate_right(my_list, 7))   # [4, 5, 1, 2, 3]  (same as k=2)
+What you practice: Modulo arithmetic, mapping indices, creating new lists.
+
+3. Remove duplicates from a list while preserving order
+Task: Write remove_duplicates(lst) that returns a new list with duplicates removed, keeping the first occurrence of each element. Use only loops and a helper list (no set or dictionary).
+
+python
+def remove_duplicates(lst):
+    unique = []
+    for item in lst:
+        found = False
+        for seen in unique:
+            if seen == item:
+                found = True
+                break
+        if not found:
+            unique.append(item)
+    return unique
+
+# Example
+data = [4, 2, 5, 2, 4, 1, 3, 5]
+print(remove_duplicates(data))   # [4, 2, 5, 1, 3]
+What you practice: Nested loops to check membership, manual duplicate detection.
+
+4. Transpose a matrix (list of lists)
+Task: Given a matrix as a list of lists (all rows same length), write transpose(matrix) that returns a new matrix with rows and columns swapped.
+
+python
+def transpose(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0]) if rows > 0 else 0
+    transposed = []
+    for c in range(cols):
+        new_row = []
+        for r in range(rows):
+            new_row.append(matrix[r][c])
+        transposed.append(new_row)
+    return transposed
+
+# Example
+mat = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+print(transpose(mat))
+# Output: [[1, 4], [2, 5], [3, 6]]
+What you practice: Working with 2D lists (matrices), nested loops with row/col index swapping.
+
+5. Count frequency of words in a sentence
+Task: Write word_frequency(sentence) that takes a string and returns a dictionary where keys are words (lowercased) and values are how many times each word appears. Words are separated by spaces. Ignore punctuation – for simplicity assume only spaces and letters.
+
+python
+def word_frequency(sentence):
+    words = sentence.split()        # splits on spaces
+    freq = {}
+    for w in words:
+        w = w.lower()               # normalize case
+        if w in freq:
+            freq[w] += 1
+        else:
+            freq[w] = 1
+    return freq
+
+# Example
+text = "The cat and the dog and the bird"
+print(word_frequency(text))
+# Output: {'the': 3, 'cat': 1, 'and': 2, 'dog': 1, 'bird': 1}
+What you practice: String methods (.split(), .lower()), dictionary accumulation.
+
+6. Longest consecutive sequence in a list of integers
+Task: Write longest_consecutive(nums) that returns the length of the longest sequence of consecutive integers (e.g., [100,4,200,1,3,2] → longest is [1,2,3,4] length 4). You can assume no duplicates. Use only loops and lists (no set to speed up – it’s fine to use a list for checking).
+
+python
+def longest_consecutive(nums):
+    if not nums:
+        return 0
+    nums_sorted = sorted(nums)      # we'll use sorted – that's allowed
+    longest = 1
+    current = 1
+    for i in range(1, len(nums_sorted)):
+        if nums_sorted[i] == nums_sorted[i-1] + 1:
+            current += 1
+        else:
+            longest = max(longest, current)
+            current = 1
+    return max(longest, current)
+
+# Example
+numbers = [100, 4, 200, 1, 3, 2]
+print(longest_consecutive(numbers))   # 4
+What you practice: Sorting, iterating while comparing neighbors, handling edge cases.
+
