@@ -1,0 +1,19 @@
+4. Simple Log Parser (file + try/except + datetime)
+Goal:
+A log file (app.log) contains lines like:
+
+text
+ERROR 2025-03-20 10:15:00 Disk full
+INFO 2025-03-20 10:20:00 Backup started
+ERROR 2025-03-20 10:21:00 Backup failed
+Write a program that:
+
+Asks the user for a date (YYYY-MM-DD).
+
+Prints all ERROR lines from that date.
+
+Ignores missing file or incorrect date input using try/except.
+
+Extension:
+Count how many errors occurred on that day.
+

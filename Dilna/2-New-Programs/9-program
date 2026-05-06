@@ -1,0 +1,2 @@
+Transpose a matrix (list of lists)
+Task: Given a matrix as a list of lists (all rows same length), write transpose(matrix) that returns a new matrix with rows and columns swapped.

@@ -1,0 +1,2 @@
+Find all pairs in a list that sum to a target value
+Task: Write a function find_pairs(nums, target) that returns a list of unique number pairs (as tuples) from nums that add up to target. Use only loops and conditionals (no itertools).

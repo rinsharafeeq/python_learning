@@ -1,0 +1,273 @@
+1. Daily Task Logger
+python
+import datetime
+
+def add_task():
+    """Append a new task with a timestamp to tasks.txt"""
+    try:
+        task = input("What is your task for today? ")
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        with open("tasks.txt", "a") as file:
+            file.write(f"{timestamp} - {task}\n")
+        
+        print("Task saved!")
+    except Exception as e:
+        print(f"An error occurred while saving: {e}")
+
+def show_tasks():
+    """Read and display all saved tasks"""
+    try:
+        with open("tasks.txt", "r") as file:
+            content = file.read()
+            if content:
+                print("\n--- All Tasks ---")
+                print(content)
+            else:
+                print("No tasks found.")
+    except FileNotFoundError:
+        print("No task file exists yet. Add some tasks first.")
+
+# Main program
+if __name__ == "__main__":
+    show_tasks()
+    add_task()
+==========================================
+2. Expiration Date Reminder
+python
+import datetime
+
+PRODUCT_FILE = "products.txt"
+
+def add_product(name, expiry_date_str):
+    """Add a product with its expiry date (YYYY-MM-DD)"""
+    try:
+        # Validate date format
+        expiry_date = datetime.datetime.strptime(expiry_date_str, "%Y-%m-%d").date()
+        
+        with open(PRODUCT_FILE, "a") as f:
+            f.write(f"{name},{expiry_date_str}\n")
+        print(f"Added: {name} expires on {expiry_date_str}")
+    except ValueError:
+        print("Invalid date format. Use YYYY-MM-DD")
+    except Exception as e:
+        print(f"Error writing to file: {e}")
+
+def check_expiring():
+    """Show products that expire within 7 days from today"""
+    today = datetime.date.today()
+    soon = today + datetime.timedelta(days=7)
+    
+    try:
+        with open(PRODUCT_FILE, "r") as f:
+            lines = f.readlines()
+        
+        if not lines:
+            print("No products found.")
+            return
+        
+        print(f"\nProducts expiring between {today} and {soon}:")
+        found = False
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                name, date_str = line.split(",")
+                expiry = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+                if today <= expiry <= soon:
+                    print(f"⚠️ {name} - expires on {expiry}")
+                    found = True
+            except ValueError:
+                print(f"Skipping invalid line: {line}")
+        
+        if not found:
+            print("None.")
+    except FileNotFoundError:
+        print("No products file found. Add some products first.")
+
+# Example usage
+if __name__ == "__main__":
+    while True:
+        print("\n1. Add product\n2. Check expiring soon\n3. Exit")
+        choice = input("Choose: ")
+        if choice == "1":
+            name = input("Product name: ")
+            date = input("Expiry date (YYYY-MM-DD): ")
+            add_product(name, date)
+        elif choice == "2":
+            check_expiring()
+        elif choice == "3":
+            break
+        else:
+            print("Invalid choice")
+
+================================================
+3. File Backup with Timestamp
+python
+import datetime
+import shutil
+import os
+
+def backup_file():
+    """Create a timestamped backup of a given file"""
+    filename = input("Enter the file name to back up: ").strip()
+    
+    if not os.path.exists(filename):
+        print(f"Error: File '{filename}' not found.")
+        return
+    
+    # Create timestamp: YYYYMMDD_HHMMSS
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    name, ext = os.path.splitext(filename)
+    backup_name = f"{name}_backup_{timestamp}{ext}"
+    
+    try:
+        shutil.copy2(filename, backup_name)  # copy2 preserves metadata
+        print(f"Backup created: {backup_name}")
+    except PermissionError:
+        print("Permission denied: Cannot read the original file or write the backup.")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+if __name__ == "__main__":
+    backup_file()
+
+=========================================================
+
+4. Simple Log Parser
+python
+import datetime
+
+LOG_FILE = "app.log"
+
+def parse_logs_by_date():
+    """Print all ERROR lines from a user-provided date"""
+    date_str = input("Enter date (YYYY-MM-DD): ").strip()
+    
+    # Validate date format
+    try:
+        target_date = datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+    except ValueError:
+        print("Invalid date format. Use YYYY-MM-DD")
+        return
+    
+    try:
+        with open(LOG_FILE, "r") as file:
+            lines = file.readlines()
+    except FileNotFoundError:
+        print(f"Log file '{LOG_FILE}' not found.")
+        return
+    
+    error_count = 0
+    print(f"\nERROR lines from {date_str}:")
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+        # Expected format: "ERROR 2025-03-20 10:15:00 Disk full"
+        parts = line.split()
+        if len(parts) >= 3 and parts[0].upper() == "ERROR":
+            try:
+                log_date = datetime.datetime.strptime(parts[1], "%Y-%m-%d").date()
+                if log_date == target_date:
+                    print(line)
+                    error_count += 1
+            except ValueError:
+                # Skip lines where the second part isn't a valid date
+                continue
+    
+    print(f"\nTotal errors on {date_str}: {error_count}")
+
+if __name__ == "__main__":
+    parse_logs_by_date()
+
+===============================================
+5. Automated Reminder Script
+python
+import datetime
+
+REMINDER_FILE = "reminders.txt"
+
+def ensure_file():
+    """Create the reminder file if it doesn't exist"""
+    try:
+        with open(REMINDER_FILE, "x") as f:
+            f.write("# Format: YYYY-MM-DD: Reminder text\n")
+            f.write("2025-03-20: Call dentist\n")
+            f.write("2025-03-21: Submit report\n")
+        print(f"Created new reminder file with sample entries.")
+    except FileExistsError:
+        pass  # File already exists, fine
+
+def show_today_reminders():
+    """Read the file and print reminders for today"""
+    today = datetime.date.today().isoformat()  # e.g., "2025-03-20"
+    
+    try:
+        with open(REMINDER_FILE, "r") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        print("Reminder file not found. Creating one...")
+        ensure_file()
+        with open(REMINDER_FILE, "r") as f:
+            lines = f.readlines()
+    
+    found = False
+    print(f"\nReminders for {today}:")
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        
+        # Split on the first colon
+        if ": " in line:
+            date_part, reminder = line.split(": ", 1)
+            if date_part == today:
+                print(f"🔔 {reminder}")
+                found = True
+    
+    if not found:
+        print("No reminders for today.")
+
+def add_reminder():
+    """Add a new reminder from user input"""
+    date_str = input("Date (YYYY-MM-DD): ").strip()
+    reminder = input("Reminder text: ").strip()
+    
+    # Validate date format
+    try:
+        datetime.datetime.strptime(date_str, "%Y-%m-%d")
+    except ValueError:
+        print("Invalid date format. Use YYYY-MM-DD")
+        return
+    
+    try:
+        with open(REMINDER_FILE, "a") as f:
+            f.write(f"{date_str}: {reminder}\n")
+        print("Reminder added.")
+    except Exception as e:
+        print(f"Error writing to file: {e}")
+
+if __name__ == "__main__":
+    ensure_file()
+    while True:
+        print("\n1. Show today's reminders\n2. Add new reminder\n3. Exit")
+        choice = input("Choose: ")
+        if choice == "1":
+            show_today_reminders()
+        elif choice == "2":
+            add_reminder()
+        elif choice == "3":
+            break
+        else:
+            print("Invalid choice. Enter 1, 2, or 3.")
+How to run these
+Copy each code block into a separate .py file (e.g., task_logger.py, expiry_reminder.py, etc.).
+
+Run them with python filename.py.
+
+Experiment by breaking things (e.g., delete a file, type a wrong date) – the try/except blocks will handle most errors gracefully.
+
+Let me know if you’d like a deeper explanation of any part!
+

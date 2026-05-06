@@ -1,0 +1,16 @@
+2. Expiration Date Reminder (datetime + file + modules)
+Goal:
+Store product names and their expiration dates in a file. Then check which products expire within the next 7 days.
+
+Requirements:
+
+Create a CSV‑like file products.txt with lines like:
+
+text
+Milk,2025-04-01
+Bread,2025-03-25
+Write a function add_product(name, expiry_date) that appends a new product.
+
+Write a function check_expiring() that reads the file and prints which products expire in ≤7 days from today.
+
+Use try/except for missing file or invalid date format.

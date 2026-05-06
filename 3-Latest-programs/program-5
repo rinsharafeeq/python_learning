@@ -1,0 +1,22 @@
+5. Automated Reminder Script (time + datetime + file)
+Goal:
+Simulate a simple reminder system that reads from reminders.txt (one reminder per line) and shows only those scheduled for today.
+
+File format:
+
+text
+2025-03-20: Call dentist
+2025-03-21: Submit report
+Requirements:
+
+Read the file.
+
+Compare the date part with today’s date.
+
+Print matching reminders.
+
+If the file doesn’t exist, create an empty one with a message.
+
+Extra:
+Add a new reminder from user input and save it to the file.
+

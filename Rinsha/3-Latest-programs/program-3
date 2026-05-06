@@ -1,0 +1,16 @@
+3. File Backup with Timestamp (shutil + datetime + try/except)
+Goal:
+Write a script that copies any text file and renames the copy with the current timestamp.
+
+Requirements:
+
+Ask the user for the name of a file to back up (e.g., notes.txt).
+
+Create a backup named like: notes_backup_20250320_143522.txt
+
+Use the shutil module (you may need to import shutil).
+
+Handle errors if the original file does not exist or cannot be read.
+
+Hint: datetime.now().strftime("%Y%m%d_%H%M%S")
+
