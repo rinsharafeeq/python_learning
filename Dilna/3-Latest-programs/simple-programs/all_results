@@ -1,0 +1,114 @@
+1. Write a timestamp to a file
+What it does:
+Saves the current date and time into a file called timestamp.txt.
+
+python
+import datetime
+
+try:
+    now = datetime.datetime.now()
+    with open("timestamp.txt", "w") as file:
+        file.write(f"Current time: {now}\n")
+    print("Timestamp saved to timestamp.txt")
+except Exception as e:
+    print("Error:", e)
+2. Read a file and handle missing file error
+What it does:
+Tries to read data.txt. If it doesn't exist, prints a friendly message instead of crashing.
+
+python
+try:
+    with open("data.txt", "r") as file:
+        content = file.read()
+        print("File content:")
+        print(content)
+except FileNotFoundError:
+    print("The file 'data.txt' was not found. Please create it first.")
+3. Append user input to a file with a timestamp
+What it does:
+Asks you to type something, then adds it to notes.txt with the current date and time.
+
+python
+import datetime
+
+user_note = input("Write a note: ")
+now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+try:
+    with open("notes.txt", "a") as file:
+        file.write(f"{now} - {user_note}\n")
+    print("Note saved!")
+except Exception as e:
+    print("Could not save note:", e)
+4. Calculate days until your birthday
+What it does:
+Asks for your birthday (month and day), then tells you how many days until your next birthday.
+
+python
+import datetime
+
+today = datetime.date.today()
+birthday_str = input("Enter your birthday (MM-DD): ")
+
+try:
+    birthday = datetime.datetime.strptime(birthday_str, "%m-%d").date()
+    birthday_this_year = birthday.replace(year=today.year)
+    
+    if birthday_this_year < today:
+        birthday_this_year = birthday_this_year.replace(year=today.year + 1)
+    
+    days_left = (birthday_this_year - today).days
+    print(f"Your next birthday is in {days_left} days.")
+except ValueError:
+    print("Invalid format. Please use MM-DD (e.g., 05-15 for May 15).")
+5. Simple log writer (with try/except)
+What it does:
+Writes a log message to mylog.txt. If it fails, prints the error.
+
+python
+import datetime
+
+def write_log(message):
+    try:
+        timestamp = datetime.datetime.now()
+        with open("mylog.txt", "a") as log_file:
+            log_file.write(f"{timestamp} - {message}\n")
+        print("Logged successfully.")
+    except Exception as err:
+        print("Logging failed:", err)
+
+# Test it
+write_log("Program started")
+write_log("User clicked a button")
+write_log("Program ended")
+6. Read all lines from a file and print them
+What it does:
+Reads todo.txt and shows each line with a number. If the file is missing, creates an empty one.
+
+python
+try:
+    with open("todo.txt", "r") as file:
+        lines = file.readlines()
+        if lines:
+            for i, line in enumerate(lines, start=1):
+                print(f"{i}. {line.strip()}")
+        else:
+            print("Your todo list is empty.")
+except FileNotFoundError:
+    print("No todo list found. Creating an empty one...")
+    with open("todo.txt", "w") as file:
+        file.write("")
+    print("Created todo.txt – you can add tasks later.")
+7. Add two numbers (with error handling)
+What it does:
+Asks for two numbers, prints the sum. If the user types text instead of a number, it catches the error and asks again.
+
+python
+while True:
+    try:
+        num1 = float(input("First number: "))
+        num2 = float(input("Second number: "))
+        print(f"Sum = {num1 + num2}")
+        break
+    except ValueError:
+        print("That's not a valid number. Try again.")
