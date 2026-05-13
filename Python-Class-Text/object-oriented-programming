@@ -290,7 +290,7 @@ fish = Animal()
 
 In this case whenever you tried to run you will get legs not defined error.
 
-becuse count_legs function no idea about legs variable
+because count_legs function no idea about legs variable
 
  if you make %puppy.legs will get puppy legs as 4 but cannot use other animals
 
@@ -388,7 +388,7 @@ class Car:
 
 Benz = Car()
 
-print(Benz.start("Corolla", "Toyota" , "2019"))
+print(Benz.start("Corolla", "Toyota" , "2019"))  # print oyivaakiyaal NONE oyivaakum
 print(Benz.name)
 print(Benz.make)
 

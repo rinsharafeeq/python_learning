@@ -22,3 +22,9 @@ w=4
 print(d is f)
 print(s is  not s)
 print(d is w)
+
+f = open("demofile", "r")
+print(f.read(5))
+
+f = open("demofile", "r")
+print(f.readline())
