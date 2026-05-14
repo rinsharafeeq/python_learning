@@ -1,0 +1,7 @@
+Password Generator (pip + OOP)
+Install pyperclip (to copy password to clipboard).
+Create a PasswordGenerator class with methods: generate(length, use_uppercase, use_digits, use_symbols) and copy_to_clipboard().
+The user specifies criteria via command-line arguments or a simple prompt.
+Save generated passwords to a JSON log (date, password, purpose).
+
+Practice: Using pip packages, string manipulation, JSON logging.

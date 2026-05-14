@@ -1,0 +1,10 @@
+Todo List with Categories (OOP + modules)
+Split the program into two files:
+
+task.py – defines a Task class (description, category, done flag).
+
+main.py – imports the class and runs a menu-driven app.
+Store tasks in a JSON file.
+Allow the user to add tasks, mark complete, and view tasks by category.
+
+Practice: Creating and importing your own modules, classes, JSON.

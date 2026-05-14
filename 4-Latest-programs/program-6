@@ -1,0 +1,7 @@
+Expense Tracker (pip + JSON + OOP)
+Install tabulate or prettytable (pip) to print expense tables.
+Create an Expense class (date, category, amount, description).
+Build a Tracker class that stores expenses, sums by category, and exports/imports JSON.
+Print a monthly summary in a nice table format.
+
+Practice: Using external libraries for formatting, class design, JSON.

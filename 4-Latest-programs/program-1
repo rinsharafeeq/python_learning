@@ -1,0 +1,6 @@
+Library Book Manager (OOP + JSON)
+Create a Book class with attributes: title, author, isbn, available (boolean).
+Write methods: borrow(), return_book(), and a to_dict() / from_dict() to save/load a list of books to/from a JSON file.
+Add a simple text menu to add books, borrow, return, and list all books.
+
+Practice: Classes, JSON serialization, file I/O.
