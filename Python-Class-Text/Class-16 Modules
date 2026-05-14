@@ -3,7 +3,8 @@ Python Modules
 
 What is a Module?
 ------------------
-module is a file consisting of Python code. A module can define functions, classes and variables. A module can also include runnable code.
+module is a file consisting of Python code. A module can define functions, classes and variables.
+A module can also include runnable code.
 
 Consider a module to be the same as a code library.
 
@@ -45,7 +46,10 @@ When you import a module, the Python interpreter searches for the module in the 
 
 
 The PYTHONPATH Variable
-The PYTHONPATH is an environment variable, consisting of a list of directories. The syntax of PYTHONPATH is the same as that of the shell variable PATH.
+------------------------
+
+The PYTHONPATH is an environment variable, consisting of a list of directories.
+The syntax of PYTHONPATH is the same as that of the shell variable PATH.
 
 And here is a typical PYTHONPATH from a UNIX system −
 

@@ -80,15 +80,15 @@ If it is not defined any local variable by default it will take global variable
 if you want to change a global variable value from function can use global keyword.
 
 
+a = 10
 def greet():
-    global a
-    a = 25
-    print("Local Varible" , a)
+    a = 20
+    b = 20
     print(a)
 
-greet()
+greet():
 print(a)
-
+print(b)
 
 will get it 25 
 
@@ -121,8 +121,6 @@ def greet():
     
     x = globals()['a']
     print("Global Varible", x)
-   
-
 
 greet()
 print(a)

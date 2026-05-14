@@ -1,5 +1,6 @@
 
-#Task: Create a function filter_even(numbers) which returns a new list containing only the even numbers from the input list.
+#Task: Create a function filter_even(numbers) which returns a new list containing only the
+# even numbers from the input list.
 #Filter even numbers from a list
 def filter_even(numbers):
 

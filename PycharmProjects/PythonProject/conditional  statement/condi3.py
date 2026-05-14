@@ -10,11 +10,12 @@
 #     print("D")
 # else:
 #     print("FAILED")
-# c=input("enter a character :")
-# if c in 'aeiouAEIOUA' :
-#     print("vowel")
-# else:
-#     print("not vowel")
+
+c=input("enter a character :")
+if c in 'aeiou' :
+    print("vowel")
+else:
+    print("not vowel")
 
 
 print(" 1.additon \n 2.substraction \n 3.multiplication \n 4.division")

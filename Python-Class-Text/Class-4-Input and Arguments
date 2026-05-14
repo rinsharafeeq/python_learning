@@ -18,7 +18,7 @@ age = input()  =  3.x
 
 
 >>> Name = input("Give your Name")
-Give your Nameashique
+Give your Name ashique
 >>> print("My name is", Name)
 My name is ashique
 >>> 
@@ -34,7 +34,7 @@ add a parameter x = input("Enter a number")
 
 Always giving str format
 
-x = int(input("Enter Firsrt Number"))
+x = int(input("Enter First Number"))
 
 
 Restriction for character 

@@ -10,5 +10,5 @@ def  make_dict(keys, values):
     return dict
 
 name = ["rinsha","dilna","rishana"]
-age = [10,20,30]
+age = [18,18,10]
 print(make_dict(name,age))
