@@ -1,0 +1,117 @@
+1. Class & Object – Simple Car
+python
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+    def honk(self):
+        print(f"{self.brand} says Beep!")
+
+my_car = Car("Toyota", "Red")
+my_car.honk()
+
+
+2. JSON – Save and load a dictionary
+python
+import json
+
+data = {"name": "Alice", "age": 25}
+with open("data.json", "w") as f:
+    json.dump(data, f)
+
+with open("data.json", "r") as f:
+    loaded = json.load(f)
+    print(loaded["name"])
+
+3. Import and use a module – using math
+python
+import math
+
+print(math.sqrt(16))
+print(math.pi)
+4. Install and use a pip package – emoji
+python
+# First run: pip install emoji
+import emoji
+
+print(emoji.emojize("Hello :earth_asia:"))
+5. Class with a method that uses self
+python
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print(f"{self.name} says Woof!")
+
+d = Dog("Buddy")
+d.bark()
+6. Write your own module and import it
+File: mymath.py (save this first)
+
+python
+def double(x):
+    return x * 2
+File: main.py (run this)
+
+python
+from mymath import double
+
+print(double(5))
+7. Class + JSON together – save and load one object
+python
+import json
+
+class User:
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+user = User("Bob", 100)
+# Save
+with open("user.json", "w") as f:
+    json.dump({"name": user.name, "score": user.score}, f)
+# Load
+with open("user.json", "r") as f:
+    data = json.load(f)
+    loaded_user = User(data["name"], data["score"])
+    print(loaded_user.name, loaded_user.score)
+8. Simple pip + API (free, no key needed – uses public JSON)
+python
+import requests
+
+response = requests.get("https://dog.ceo/api/breeds/image/random")
+data = response.json()
+print(data["message"])  # prints a random dog image URL
+9. Class with a class variable
+python
+class Student:
+    school = "ABC School"   # class variable
+
+    def __init__(self, name):
+        self.name = name
+
+s1 = Student("John")
+s2 = Student("Emma")
+print(s1.school, s2.school)
+10. Mini to-do using JSON (add and view only)
+python
+import json
+
+def add_task(task):
+    try:
+        with open("tasks.json", "r") as f:
+            tasks = json.load(f)
+    except:
+        tasks = []
+    tasks.append(task)
+    with open("tasks.json", "w") as f:
+        json.dump(tasks, f)
+
+def show_tasks():
+    with open("tasks.json", "r") as f:
+        print(json.load(f))
+
+add_task("Buy milk")
+show_tasks()
