@@ -1,0 +1,7 @@
+Simple Contact Book (OOP + JSON)
+Define a Contact class (name, phone, email).
+Create a ContactBook class that holds a list of contacts and has methods: add(), delete(), search(), list_all().
+Store the contact list as JSON.
+At startup, load the file; on exit, save automatically.
+
+Practice: Lists of objects, search logic, file handling.

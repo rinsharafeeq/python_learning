@@ -1,0 +1,7 @@
+Student Grade Tracker (JSON + OOP)
+Create a Student class with name, roll number, and a dictionary of subjects → marks.
+Methods: add_grade(), calculate_average(), get_report().
+Save all students to a JSON file.
+Write a script that loads existing data, lets the user add new students or grades, and saves back.
+
+Practice: Nested JSON structures, class methods, data persistence.

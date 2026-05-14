@@ -1,0 +1,631 @@
+1. Library Book Manager (OOP + JSON)
+python
+import json
+import os
+
+class Book:
+    def __init__(self, title, author, isbn, available=True):
+        self.title = title
+        self.author = author
+        self.isbn = isbn
+        self.available = available
+
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "author": self.author,
+            "isbn": self.isbn,
+            "available": self.available
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["title"], data["author"], data["isbn"], data["available"])
+
+    def borrow(self):
+        if self.available:
+            self.available = False
+            return True
+        return False
+
+    def return_book(self):
+        self.available = True
+
+class Library:
+    def __init__(self, filename="library.json"):
+        self.filename = filename
+        self.books = []
+        self.load()
+
+    def load(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, "r") as f:
+                data = json.load(f)
+                self.books = [Book.from_dict(b) for b in data]
+
+    def save(self):
+        with open(self.filename, "w") as f:
+            json.dump([b.to_dict() for b in self.books], f, indent=4)
+
+    def add_book(self, book):
+        self.books.append(book)
+        self.save()
+
+    def find_book(self, isbn):
+        for book in self.books:
+            if book.isbn == isbn:
+                return book
+        return None
+
+    def list_books(self):
+        for book in self.books:
+            status = "Available" if book.available else "Borrowed"
+            print(f"{book.title} by {book.author} [{status}]")
+
+def menu():
+    lib = Library()
+    while True:
+        print("\n1. Add Book")
+        print("2. Borrow Book")
+        print("3. Return Book")
+        print("4. List Books")
+        print("5. Exit")
+        choice = input("Choose: ")
+        if choice == "1":
+            title = input("Title: ")
+            author = input("Author: ")
+            isbn = input("ISBN: ")
+            lib.add_book(Book(title, author, isbn))
+        elif choice == "2":
+            isbn = input("Enter ISBN to borrow: ")
+            book = lib.find_book(isbn)
+            if book and book.borrow():
+                print("Borrowed successfully.")
+                lib.save()
+            else:
+                print("Not available or not found.")
+        elif choice == "3":
+            isbn = input("Enter ISBN to return: ")
+            book = lib.find_book(isbn)
+            if book:
+                book.return_book()
+                lib.save()
+                print("Returned.")
+        elif choice == "4":
+            lib.list_books()
+        elif choice == "5":
+            break
+
+if __name__ == "__main__":
+    menu()
+2. Weather CLI App (pip + API + JSON)
+python
+import requests
+import json
+
+class WeatherFetcher:
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.base_url = "http://api.openweathermap.org/data/2.5/weather"
+
+    def get_weather(self, city):
+        params = {
+            "q": city,
+            "appid": self.api_key,
+            "units": "metric"
+        }
+        try:
+            response = requests.get(self.base_url, params=params)
+            data = response.json()
+            if response.status_code == 200:
+                temp = data["main"]["temp"]
+                humidity = data["main"]["humidity"]
+                description = data["weather"][0]["description"]
+                return f"{city}: {temp}°C, {humidity}% humidity, {description}"
+            else:
+                return f"Error: {data.get('message', 'Unknown error')}"
+        except Exception as e:
+            return f"Failed: {e}"
+
+if __name__ == "__main__":
+    # Get a free API key from https://openweathermap.org/api
+    API_KEY = "your_api_key_here"
+    fetcher = WeatherFetcher(API_KEY)
+    city = input("Enter city name: ")
+    print(fetcher.get_weather(city))
+Note: She must replace your_api_key_here with her actual OpenWeatherMap API key.
+
+3. Todo List with Categories (OOP + modules)
+task.py (module)
+
+python
+class Task:
+    def __init__(self, description, category, done=False):
+        self.description = description
+        self.category = category
+        self.done = done
+
+    def to_dict(self):
+        return {
+            "description": self.description,
+            "category": self.category,
+            "done": self.done
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["description"], data["category"], data["done"])
+main.py
+
+python
+import json
+import os
+from task import Task
+
+class TodoApp:
+    def __init__(self, filename="tasks.json"):
+        self.filename = filename
+        self.tasks = []
+        self.load()
+
+    def load(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, "r") as f:
+                data = json.load(f)
+                self.tasks = [Task.from_dict(t) for t in data]
+
+    def save(self):
+        with open(self.filename, "w") as f:
+            json.dump([t.to_dict() for t in self.tasks], f, indent=4)
+
+    def add_task(self, description, category):
+        self.tasks.append(Task(description, category))
+        self.save()
+
+    def mark_done(self, index):
+        if 0 <= index < len(self.tasks):
+            self.tasks[index].done = True
+            self.save()
+
+    def view_by_category(self, category):
+        for t in self.tasks:
+            if t.category.lower() == category.lower():
+                status = "✓" if t.done else "✗"
+                print(f"{status} {t.description}")
+
+    def view_all(self):
+        for i, t in enumerate(self.tasks):
+            status = "✓" if t.done else "✗"
+            print(f"{i}. [{status}] {t.description} ({t.category})")
+
+def main():
+    app = TodoApp()
+    while True:
+        print("\n1. Add Task")
+        print("2. Mark Task Done")
+        print("3. View by Category")
+        print("4. View All")
+        print("5. Exit")
+        choice = input("Choose: ")
+        if choice == "1":
+            desc = input("Description: ")
+            cat = input("Category: ")
+            app.add_task(desc, cat)
+        elif choice == "2":
+            app.view_all()
+            idx = int(input("Enter task number: "))
+            app.mark_done(idx)
+        elif choice == "3":
+            cat = input("Category: ")
+            app.view_by_category(cat)
+        elif choice == "4":
+            app.view_all()
+        elif choice == "5":
+            break
+
+if __name__ == "__main__":
+    main()
+4. Student Grade Tracker (JSON + OOP)
+python
+import json
+import os
+
+class Student:
+    def __init__(self, name, roll_number, grades=None):
+        self.name = name
+        self.roll_number = roll_number
+        self.grades = grades if grades is not None else {}
+
+    def add_grade(self, subject, mark):
+        self.grades[subject] = mark
+
+    def calculate_average(self):
+        if not self.grades:
+            return 0
+        return sum(self.grades.values()) / len(self.grades)
+
+    def get_report(self):
+        report = f"Student: {self.name} (Roll: {self.roll_number})\n"
+        for sub, mark in self.grades.items():
+            report += f"  {sub}: {mark}\n"
+        report += f"Average: {self.calculate_average():.2f}\n"
+        return report
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "roll_number": self.roll_number,
+            "grades": self.grades
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["name"], data["roll_number"], data["grades"])
+
+class GradeTracker:
+    def __init__(self, filename="students.json"):
+        self.filename = filename
+        self.students = []
+        self.load()
+
+    def load(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, "r") as f:
+                data = json.load(f)
+                self.students = [Student.from_dict(s) for s in data]
+
+    def save(self):
+        with open(self.filename, "w") as f:
+            json.dump([s.to_dict() for s in self.students], f, indent=4)
+
+    def add_student(self, name, roll):
+        self.students.append(Student(name, roll))
+        self.save()
+
+    def find_student(self, roll):
+        for s in self.students:
+            if s.roll_number == roll:
+                return s
+        return None
+
+def menu():
+    tracker = GradeTracker()
+    while True:
+        print("\n1. Add Student")
+        print("2. Add Grade")
+        print("3. View Student Report")
+        print("4. Exit")
+        choice = input("Choose: ")
+        if choice == "1":
+            name = input("Name: ")
+            roll = input("Roll number: ")
+            tracker.add_student(name, roll)
+        elif choice == "2":
+            roll = input("Roll number: ")
+            student = tracker.find_student(roll)
+            if student:
+                subject = input("Subject: ")
+                mark = float(input("Mark: "))
+                student.add_grade(subject, mark)
+                tracker.save()
+            else:
+                print("Student not found.")
+        elif choice == "3":
+            roll = input("Roll number: ")
+            student = tracker.find_student(roll)
+            if student:
+                print(student.get_report())
+            else:
+                print("Not found.")
+        elif choice == "4":
+            break
+
+if __name__ == "__main__":
+    menu()
+5. Simple Contact Book (OOP + JSON)
+python
+import json
+import os
+
+class Contact:
+    def __init__(self, name, phone, email):
+        self.name = name
+        self.phone = phone
+        self.email = email
+
+    def to_dict(self):
+        return {"name": self.name, "phone": self.phone, "email": self.email}
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["name"], data["phone"], data["email"])
+
+class ContactBook:
+    def __init__(self, filename="contacts.json"):
+        self.filename = filename
+        self.contacts = []
+        self.load()
+
+    def load(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, "r") as f:
+                data = json.load(f)
+                self.contacts = [Contact.from_dict(c) for c in data]
+
+    def save(self):
+        with open(self.filename, "w") as f:
+            json.dump([c.to_dict() for c in self.contacts], f, indent=4)
+
+    def add(self, contact):
+        self.contacts.append(contact)
+        self.save()
+
+    def delete(self, name):
+        self.contacts = [c for c in self.contacts if c.name.lower() != name.lower()]
+        self.save()
+
+    def search(self, keyword):
+        results = [c for c in self.contacts if keyword.lower() in c.name.lower() or keyword in c.phone]
+        return results
+
+    def list_all(self):
+        for c in self.contacts:
+            print(f"{c.name} | {c.phone} | {c.email}")
+
+def main():
+    cb = ContactBook()
+    while True:
+        print("\n1. Add Contact")
+        print("2. Delete Contact")
+        print("3. Search")
+        print("4. List All")
+        print("5. Exit")
+        choice = input("Choose: ")
+        if choice == "1":
+            name = input("Name: ")
+            phone = input("Phone: ")
+            email = input("Email: ")
+            cb.add(Contact(name, phone, email))
+        elif choice == "2":
+            name = input("Name to delete: ")
+            cb.delete(name)
+        elif choice == "3":
+            kw = input("Search term: ")
+            results = cb.search(kw)
+            for c in results:
+                print(f"{c.name} - {c.phone} - {c.email}")
+        elif choice == "4":
+            cb.list_all()
+        elif choice == "5":
+            break
+
+if __name__ == "__main__":
+    main()
+
+
+6. Expense Tracker (pip + JSON + OOP)
+python
+import json
+import os
+from tabulate import tabulate
+from datetime import datetime
+
+class Expense:
+    def __init__(self, date, category, amount, description):
+        self.date = date
+        self.category = category
+        self.amount = float(amount)
+        self.description = description
+
+    def to_dict(self):
+        return {
+            "date": self.date,
+            "category": self.category,
+            "amount": self.amount,
+            "description": self.description
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["date"], data["category"], data["amount"], data["description"])
+
+class Tracker:
+    def __init__(self, filename="expenses.json"):
+        self.filename = filename
+        self.expenses = []
+        self.load()
+
+    def load(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, "r") as f:
+                data = json.load(f)
+                self.expenses = [Expense.from_dict(e) for e in data]
+
+    def save(self):
+        with open(self.filename, "w") as f:
+            json.dump([e.to_dict() for e in self.expenses], f, indent=4)
+
+    def add_expense(self, category, amount, description):
+        date = datetime.now().strftime("%Y-%m-%d")
+        self.expenses.append(Expense(date, category, amount, description))
+        self.save()
+
+    def monthly_summary(self, month, year):
+        filtered = [e for e in self.expenses if e.date.startswith(f"{year}-{month:02d}")]
+        summary = {}
+        for e in filtered:
+            summary[e.category] = summary.get(e.category, 0) + e.amount
+        return summary
+
+    def print_table(self):
+        table = [[e.date, e.category, f"${e.amount:.2f}", e.description] for e in self.expenses]
+        print(tabulate(table, headers=["Date", "Category", "Amount", "Description"], tablefmt="grid"))
+
+def main():
+    tracker = Tracker()
+    while True:
+        print("\n1. Add Expense")
+        print("2. Show All Expenses")
+        print("3. Monthly Summary")
+        print("4. Exit")
+        choice = input("Choose: ")
+        if choice == "1":
+            cat = input("Category (e.g., Food, Transport): ")
+            amt = float(input("Amount: "))
+            desc = input("Description: ")
+            tracker.add_expense(cat, amt, desc)
+        elif choice == "2":
+            tracker.print_table()
+        elif choice == "3":
+            month = int(input("Month (1-12): "))
+            year = int(input("Year (YYYY): "))
+            summ = tracker.monthly_summary(month, year)
+            for cat, total in summ.items():
+                print(f"{cat}: ${total:.2f}")
+        elif choice == "4":
+            break
+
+if __name__ == "__main__":
+    main()
+Note: Install tabulate with pip install tabulate before running.
+
+7. Quiz Game Using a JSON Question Bank
+questions.json (create this file manually)
+
+json
+[
+    {
+        "question": "What is the capital of France?",
+        "options": ["Berlin", "Madrid", "Paris", "Lisbon"],
+        "answer": 2
+    },
+    {
+        "question": "Which language is used for this quiz?",
+        "options": ["Java", "C++", "Python", "Ruby"],
+        "answer": 2
+    },
+    {
+        "question": "What is 2 + 2?",
+        "options": ["3", "4", "5", "6"],
+        "answer": 1
+    }
+]
+quiz.py
+
+python
+import json
+import os
+
+class Quiz:
+    def __init__(self, filename="questions.json"):
+        self.filename = filename
+        self.questions = []
+        self.score = 0
+        self.load_questions()
+
+    def load_questions(self):
+        if os.path.exists(self.filename):
+            with open(self.filename, "r") as f:
+                self.questions = json.load(f)
+
+    def run(self):
+        for i, q in enumerate(self.questions, 1):
+            print(f"\nQuestion {i}: {q['question']}")
+            for idx, opt in enumerate(q['options']):
+                print(f"{idx}. {opt}")
+            try:
+                answer = int(input("Your choice (number): "))
+                if answer == q['answer']:
+                    print("Correct!")
+                    self.score += 1
+                else:
+                    correct_text = q['options'][q['answer']]
+                    print(f"Wrong! Correct answer: {correct_text}")
+            except:
+                print("Invalid input, skipping.")
+        self.save_result()
+
+    def save_result(self, result_file="quiz_results.json"):
+        result = {
+            "score": self.score,
+            "total": len(self.questions),
+            "percentage": (self.score / len(self.questions)) * 100
+        }
+        with open(result_file, "w") as f:
+            json.dump(result, f, indent=4)
+        print(f"\nQuiz finished! Score: {self.score}/{len(self.questions)}")
+        print(f"Result saved to {result_file}")
+
+if __name__ == "__main__":
+    quiz = Quiz()
+    quiz.run()
+8. Password Generator (pip + OOP)
+python
+import random
+import string
+import json
+import pyperclip
+from datetime import datetime
+
+class PasswordGenerator:
+    def __init__(self):
+        self.lower = string.ascii_lowercase
+        self.upper = string.ascii_uppercase
+        self.digits = string.digits
+        self.symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?"
+
+    def generate(self, length=12, use_uppercase=True, use_digits=True, use_symbols=True):
+        pool = self.lower
+        if use_uppercase:
+            pool += self.upper
+        if use_digits:
+            pool += self.digits
+        if use_symbols:
+            pool += self.symbols
+        if not pool:
+            pool = self.lower
+        password = ''.join(random.choice(pool) for _ in range(length))
+        return password
+
+    def copy_to_clipboard(self, password):
+        pyperclip.copy(password)
+        print("Password copied to clipboard!")
+
+class PasswordLogger:
+    def __init__(self, filename="passwords.json"):
+        self.filename = filename
+
+    def log(self, password, purpose=""):
+        try:
+            with open(self.filename, "r") as f:
+                data = json.load(f)
+        except (FileNotFoundError, json.JSONDecodeError):
+            data = []
+        data.append({
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "password": password,
+            "purpose": purpose
+        })
+        with open(self.filename, "w") as f:
+            json.dump(data, f, indent=4)
+
+def main():
+    gen = PasswordGenerator()
+    logger = PasswordLogger()
+    length = int(input("Password length (default 12): ") or 12)
+    use_upper = input("Include uppercase? (y/n): ").lower() == 'y'
+    use_digits = input("Include digits? (y/n): ").lower() == 'y'
+    use_symbols = input("Include symbols? (y/n): ").lower() == 'y'
+    password = gen.generate(length, use_upper, use_digits, use_symbols)
+    print(f"Generated password: {password}")
+    copy = input("Copy to clipboard? (y/n): ").lower()
+    if copy == 'y':
+        gen.copy_to_clipboard(password)
+    purpose = input("Enter purpose (e.g., Gmail, Facebook): ")
+    logger.log(password, purpose)
+    print("Password logged.")
+
+if __name__ == "__main__":
+    main()
+Note: Install pyperclip with pip install pyperclip.
+

@@ -1,0 +1,6 @@
+Quiz Game Using a JSON Question Bank (import + JSON)
+Prepare a questions.json file with 5–10 questions, each containing: question text, options list, correct answer index.
+Write a Quiz class that loads the JSON, asks each question, validates input, and keeps score.
+At the end, show the score and save results to a JSON file.
+
+Practice: Loading data from JSON, controlling program flow, class design.
